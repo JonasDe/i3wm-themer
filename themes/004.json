@@ -35,8 +35,8 @@
   "polybar": {
     "background": "#1d1e26",
     "foreground": "#b0b287",
-    "modules-left": "wlan eth",
-    "modules-center": "i3",
+    "modules-left": "memory cpu alsa battery network",
+    "modules-center": "workspaces",
     "modules-right": "date powermenu",
     "label-unfocused-background": "#789073",
     "label-unfocused-foreground": "#1d1e26",

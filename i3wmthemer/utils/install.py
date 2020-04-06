@@ -1,4 +1,5 @@
 import logging
+import traceback
 from shutil import copyfile
 
 from i3wmthemer.utils.fileutils import FileUtils
@@ -26,7 +27,8 @@ class InstallationUtils:
                 copyfile(new_file, file)
                 logger.warning('Installed the new file successfully!')
                 return True
-            except IOError:
+            except IOError as e:
+                traceback.print_exc(file=sys.stdout)
                 logger.error('Failed to install the new file!')
                 return False
         else:
