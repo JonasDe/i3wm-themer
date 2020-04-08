@@ -317,8 +317,8 @@ mode "$mode_gaps_left" {
         bindsym Escape mode "default"
 }
 # Startup Config
-# exec_always --no-startup-id $HOME/.config/feh/launch.sh
-#exec_always --no-startup-id $HOME/.config/compton/launch.sh
+exec_always --no-startup-id $HOME/.config/feh/launch.sh
+exec_always --no-startup-id $HOME/.config/compton/launch.sh
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 
