@@ -8,27 +8,35 @@ colors:
   - &shade6  "#BCAAA4"
   - &shade7  "#90A4AE"
   - &shade8  "#B0BEC5"
-  - &fg-alt  "#141C21"
+  - &shade9  "#5D4037"
+  - &shade10  "#6D4C41"
+  - &shade11  "#795548"
+  - &shade12  "#8D6E63"
+  - &shade13  "#A1887F"
+  - &shade14  "#BCAAA4"
+  - &shade15  "#90A4AE"
+  - &fg  "#141C21"
+  - &bg  "#795548"
 xresources:
   background: "#1e1e20"
   foreground: "#c5c8c6"
   cursorcolor: "#c5c8c6"
-  color0: "#101010"
-  color1: "#953331"
-  color2: "#546A29"
-  color3: "#909737"
-  color4: "#385E6B"
-  color5: "#7F355E"
-  color6: "#34676F"
-  color7: "#dddddd"
-  color8: "#404040"
-  color9: "#8D4A48"
-  color10: "#7E9960"
-  color11: "#9CA554"
-  color12: "#5C737C"
-  color13: "#95618B"
-  color14: "#5D858A"
-  color15: "#dddddd"
+  color0: *fg
+  color1: *shade1
+  color2: *shade2
+  color3: *shade3
+  color4: *shade4
+  color5: *shade5
+  color6: *shade6
+  color7: *shade7
+  color8: *shade8
+  color9: *shade9
+  color10: *shade10
+  color11: *shade11
+  color12: *shade12
+  color13: *shade13
+  color14: *shade14
+  color15: *shade15
   rofi.color-window: "#1e1e20, #2c5159, #2c5159"
   rofi.color-normal: "#1e1e20, #c5c8c6, #1e1e20, #1e1e20, #2c5159"
   rofi.color-active: "#1e1e20, #c5c8c6, #1e1e20, #1e1e20, #2c5159"
@@ -54,12 +62,12 @@ polybar:
   label-focused-background: "#2c5159"
   label-visible-background: "#56737a"
   label-visible-foreground: "#1e1e20"
-  format-foreground: "#141C21"
-  format-background: "#D9DBDF"
+  format-foreground: *fg
+  format-background: *bg
   label-open-foreground: "#56737a"
   label-close-foreground: "#56737a"
   label-separator-foreground: "#80969b"
-  format-connected-foreground: *fg-alt
+  format-connected-foreground: *fg
   format-connected-background: *shade2
   format-connected-prefix-foreground: "#80969b"
   ramp-signal-foreground: "#1e1e20"

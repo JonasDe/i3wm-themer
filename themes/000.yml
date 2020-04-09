@@ -33,8 +33,8 @@ polybar:
   background: '#1d1f21'
   foreground: '#c5c8c6'
   modules-left: workspaces
-  modules-center: workspaces
-  modules-right: memory cpu alsa battery network date
+  modules-center: date
+  modules-right: memory cpu alsa battery network
   label-unfocused-background: '#81a2be'
   label-unfocused-foreground: '#1d1f21'
   label-mode-background: '#1d1f21'
