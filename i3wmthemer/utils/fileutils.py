@@ -51,7 +51,7 @@ class FileUtils:
                 if file.endswith("json"):
                     file = json.load(theme_data)
                 else:
-                    file = yaml.load(theme_data)
+                    file = yaml.safe_load(theme_data)
         else:
             logger.error('Failed to locate the theme file.')
             exit(9)
