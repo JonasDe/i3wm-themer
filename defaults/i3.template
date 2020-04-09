@@ -107,6 +107,9 @@ bindsym Mod4+Shift+minus move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym Mod4+minus scratchpad show
 
+assign [class="URxvt"] number 1
+assign [class="Chromium"] number 2
+assign [class="pycharm"] number 3
 # switch to workspace
 bindsym Mod4+1 workspace number 1
 bindsym Mod4+2 workspace number 2
@@ -189,6 +192,9 @@ bar {
 #bindsym Mod1+space exec $HOME/.config/i3/rofi_centered.sh
 bindsym Mod1+space exec $HOME/.config/rofi/launchers/launcher.sh
 bindsym Mod4+p exec $HOME/.bin/random_wallpaper.sh
+
+# Pinned applications
+
 
 #
 # Polybar config
@@ -322,5 +328,6 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id $HOME/.config/compton/launch.sh
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id $HOME/.cargo/bin/i3wsr
+
 
 
