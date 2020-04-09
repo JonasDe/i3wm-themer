@@ -60,7 +60,7 @@ polybar:
   label-close-foreground: "#56737a"
   label-separator-foreground: "#80969b"
   format-connected-foreground: *fg-alt
-  #format-connected-background: *shade2
+  format-connected-background: *shade2
   format-connected-prefix-foreground: "#80969b"
   ramp-signal-foreground: "#1e1e20"
 wallpaper: pirate.jpg
