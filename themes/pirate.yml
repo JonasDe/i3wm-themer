@@ -1,3 +1,14 @@
+colors: 
+  - &transparent "#00000000"
+  - &shade1  "#5D4037"
+  - &shade2  "#6D4C41"
+  - &shade3  "#795548"
+  - &shade4  "#8D6E63"
+  - &shade5  "#A1887F"
+  - &shade6  "#BCAAA4"
+  - &shade7  "#90A4AE"
+  - &shade8  "#B0BEC5"
+  - &fg-alt  "#141C21"
 xresources:
   background: "#1e1e20"
   foreground: "#c5c8c6"
@@ -30,7 +41,7 @@ i3wm:
   client.urgent: "#56737a #1e1e20 #56737a #2c5159 #2c5159"
   client.placeholder: "#56737a #1e1e20 #56737a #2c5159 #2c5159"
 polybar:
-  background: "#00000000"
+  background: *transparent
   foreground: "#00000000"
   modules-left: workspaces
   modules-center: date
@@ -48,8 +59,8 @@ polybar:
   label-open-foreground: "#56737a"
   label-close-foreground: "#56737a"
   label-separator-foreground: "#80969b"
-  format-connected-foreground: "#80969b"
-  format-connected-background: "#1e1e20"
+  format-connected-foreground: *fg-alt
+  #format-connected-background: *shade2
   format-connected-prefix-foreground: "#80969b"
   ramp-signal-foreground: "#1e1e20"
 wallpaper: pirate.jpg
