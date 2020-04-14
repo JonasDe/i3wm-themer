@@ -88,3 +88,43 @@ class FileUtils:
                             logger.error('Failed!')
         remove(file)
         move(abs_path, file)
+
+    @staticmethod
+    def replace_in_section(file, start_pattern, end_pattern, linemap):
+        """
+
+        :return:
+        """
+        fh, abs_path = mkstemp()
+        with fdopen(fh, 'w') as new_file:
+            with open(file) as old_file:
+                lines = old_file.readline()
+                line = lines[0]
+                counter = 0
+                while not line.startswith(start_pattern) and counter < len(lines):
+                    counter+=1
+                    new_file.write(line)
+                    line = line[counter]
+                # section found
+                while not line.startswith(end_pattern) and counter < len(lines):
+                    counter+=1
+                    for pattern, l in linemap.items(): #if line in linemap:
+                        if line.startswith(pattern):
+                            # replace
+                            pl1 = line
+                            pl1 = pl1.rstrip()
+                            pl2 = linemap(pl1)
+                            line = pl2 + '\n'
+                            pl2 = pl2.rstrip()
+                            logger.warning('Replacing line: \'%s\' with \'%s\'', pl1, pl2)
+                    new_file.write(line)
+                    counter+=1
+                    line = line[counter]
+
+                while counter < len(lines):
+                    new_file.write(line)
+                    counter+=1
+                    line = line[counter]
+
+        remove(file)
+        move(abs_path, file)
