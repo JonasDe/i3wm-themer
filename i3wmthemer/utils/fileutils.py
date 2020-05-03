@@ -2,6 +2,7 @@ import json
 import yaml
 import logging
 import os.path
+from abc import ABC, abstractmethod
 from os import fdopen, remove
 from shutil import move
 from tempfile import mkstemp
@@ -80,7 +81,7 @@ class FileUtils:
                         try:
                             new_file.write(new_line + '\n')
                         except IOError:
-                            logger.error('Failed!')
+                            logger.error('FailedThis should allow for a user to!')
                     else:
                         try:
                             new_file.write(line)
@@ -102,13 +103,13 @@ class FileUtils:
                 line = lines[0]
                 counter = 0
                 while not line.startswith(start_pattern) and counter < len(lines):
-                    counter+=1
+                    counter += 1
                     new_file.write(line)
                     line = line[counter]
                 # section found
                 while not line.startswith(end_pattern) and counter < len(lines):
-                    counter+=1
-                    for pattern, l in linemap.items(): #if line in linemap:
+                    counter += 1
+                    for pattern, l in linemap.items():  # if line in linemap:
                         if line.startswith(pattern):
                             # replace
                             pl1 = line
@@ -118,13 +119,56 @@ class FileUtils:
                             pl2 = pl2.rstrip()
                             logger.warning('Replacing line: \'%s\' with \'%s\'', pl1, pl2)
                     new_file.write(line)
-                    counter+=1
+                    counter += 1
                     line = line[counter]
 
                 while counter < len(lines):
                     new_file.write(line)
-                    counter+=1
+                    counter += 1
                     line = line[counter]
 
         remove(file)
         move(abs_path, file)
+
+class _FileOperation(ABC):
+
+    @abstractmethod
+    def execute(self):
+        pass
+
+class _ReplaceLine(_FileOperation):
+
+    def __init__(self, file, pattern, line):
+        self.file = file
+        self.pattern = pattern
+        self.line = line
+
+
+class _ReplaceSection(_FileOperation):
+
+    def __init__(self, file, start_pattern, end_pattern, linemap):
+        self.file = file
+        self.start_pattern = start_pattern
+        self.end_pattern = end_pattern
+        self.linemap = linemap
+
+
+class FileParser:
+    def __init__(self):
+        self.operations = []
+
+    def replace_line(self, file, pattern, new_line):
+        self.operations.append(_ReplaceLine(file, pattern, new_line))
+
+    def replace_section(self, file, start_pattern, end_pattern, linemap):
+        self.operations.append(_ReplaceSection(file, start_pattern, end_pattern, linemap))
+
+    def execute(self):
+        for line in lines:
+            for operation in self.operations:
+                
+
+
+
+        for operation in self.operations:
+            operation.execute()
