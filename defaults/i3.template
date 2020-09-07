@@ -194,9 +194,9 @@ bindsym Mod1+space exec $HOME/.config/rofi/launchers/launcher.sh
 bindsym Mod4+p exec $HOME/.bin/random_wallpaper.sh
 
 # Pinned applications
+# Rounded corners. Require the fork of i3-gaps that provides this behaviour
+border_radius 10
 
-
-#
 # Polybar config
 default_border pixel
 gaps inner 8
