@@ -166,9 +166,4 @@ class FileParser:
     def execute(self):
         for line in lines:
             for operation in self.operations:
-                
-
-
-
-        for operation in self.operations:
-            operation.execute()
+                operation.execute()
